@@ -34,3 +34,20 @@ That's it! Your server is running. For example, you can test using the Postman o
   "ok": true
 }
 ```
+Structure
+----------
+This project is structured following the MVC model (but without the V part), this could be verified on directory `./api/` were we have the base structure:
+```
+__Routes
+|
+__Controllers
+|
+__Models
+```
+All requests are received by the `server.js` interpreted by the `route.js` and redirected to a controller inside the `./api/controllers/`. The controller receive the request and do the operations in database using a model, what is an objectification of the collections in `MongoDB`.
+
+Inside the `./api/controllers/ExampleController.js` exist a basic CRUD for reference.
+
+The model part `./api/models/Example.js` has an `MongoDB` Schema, wich specify what is the fields and values acceptable by the collection. More about this schema can be seen [HERE](http://mongoosejs.com/docs/guide.html).
+
+An inportant note about the model part is that `./api/models/ModelsModule.js`, in this file is declared all the used models. It's like a register of all models running, this file is required on `./server.js`.
