@@ -1,0 +1,18 @@
+{
+  "name": "standard-blog",
+  "version": "1.0.0",
+  "description": "A demo from many technologys",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vinicios Anacleto",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.2"
+  }
+}
