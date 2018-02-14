@@ -25,7 +25,7 @@ var models = require('./api/models/ModelsModule')
 
 //Mongoose Instance Connection URL Connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/std-blog');
+mongoose.connect('mongodb://localhost/node-api');
 
 app.use(allowCORS);
 app.use(bodyParser.urlencoded({ extended: true }));
