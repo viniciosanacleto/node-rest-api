@@ -1,4 +1,4 @@
-import exampleController from '../controllers/example.controller'
+import exampleController from '../controllers/example'
 
 export default [
     {

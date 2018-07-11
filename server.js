@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 //Start the routes
 router.registerRoutes(app)
 
-//Default response for an unexistent URL
+//Default response for an nonexistent URL
 app.use(function (req, res) {
     res.status(404).send('URL ' + req.originalUrl + ' not found')
 });

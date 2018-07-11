@@ -5,5 +5,5 @@ export default {
 
     exampleParams(req,res){
         res.send(`Hello ${req.params.name}`)
-    }
+    },
 }
