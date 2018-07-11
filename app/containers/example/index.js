@@ -1,5 +1,5 @@
-import {default as registerRoutes} from './ui/api/routes/example.v1.public'
+import {default as routes} from './ui/api/routes/example.v1.public'
 
 export default {
-    registerRoutes
+    routes
 }
