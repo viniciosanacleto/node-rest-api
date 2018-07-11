@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize'
 
-const sequelize = new Sequelize('test', 'dbuser', 'secret', {
+const session = new Sequelize('test', 'dbuser', 'secret', {
     host: 'localhost',
     dialect: 'postgres',
     operatorsAliases: false,
@@ -13,18 +13,19 @@ const sequelize = new Sequelize('test', 'dbuser', 'secret', {
     },
 });
 
-const testConnection = ()=>{
-    sequelize
+const testConnection = () => {
+    session
         .authenticate()
         .then(() => {
             console.log('Connection has been established successfully.');
         })
         .catch(err => {
             console.error('Unable to connect to the database:', err);
-        });
+        })
 }
 
-export default{
-    sequelize,
+export default {
+    Sequelize,
+    session,
     testConnection
 }

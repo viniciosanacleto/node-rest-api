@@ -2,7 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import router from './app/ship/core/router/routes_boot'
-import sequelize from './app/ship/core/orm/sequelize_boot'
+import orm from './app/ship/core/orm/sequelize_boot'
 
 //Load .env
 dotenv.load()
@@ -33,7 +33,25 @@ app.use(bodyParser.json());
 router.registerRoutes(app)
 
 //Test DB connection
-sequelize.testConnection()
+orm.testConnection()
+
+const User = orm.session.define('user', {
+    firstName: {
+        type: orm.Sequelize.STRING
+    },
+    lastName: {
+        type: orm.Sequelize.STRING
+    }
+});
+
+// force: true will drop the table if it already exists
+User.sync({force: false}).then(() => {
+    // Table created
+    return User.create({
+        firstName: 'John',
+        lastName: 'Hancock'
+    });
+});
 
 //Start Server
 try {
