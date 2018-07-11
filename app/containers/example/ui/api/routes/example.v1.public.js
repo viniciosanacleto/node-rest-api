@@ -1,9 +1,14 @@
-function routes(app) {
-    app.route('/example')
-        .get(function (req, res) {
-            res.send('Welcome to Node Rest API')
-        })
-}
+import exampleController from '../controllers/example.controller'
 
-export default routes
-
+export default [
+    {
+        method: 'get',
+        path: '/example',
+        handle: exampleController.example
+    },
+    {
+        method: 'get',
+        path: '/example/:name',
+        handle: exampleController.exampleParams
+    }
+]

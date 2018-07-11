@@ -1,6 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import routes from './app/ship/core/routes/routes_boot'
+import router from './app/ship/core/router/routes_boot'
 
 var app = express()
 var port = process.env.PORT || 3000; //Port where server run.
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 //Start the routes
-routes.registerRoutes(app)
+router.registerRoutes(app)
 
 //Default response for an unexistent URL
 app.use(function (req, res) {
