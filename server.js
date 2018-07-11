@@ -35,24 +35,6 @@ router.registerRoutes(app)
 //Test DB connection
 orm.testConnection()
 
-const User = orm.session.define('user', {
-    firstName: {
-        type: orm.Sequelize.STRING
-    },
-    lastName: {
-        type: orm.Sequelize.STRING
-    }
-});
-
-// force: true will drop the table if it already exists
-User.sync({force: false}).then(() => {
-    // Table created
-    return User.create({
-        firstName: 'John',
-        lastName: 'Hancock'
-    });
-});
-
 //Start Server
 try {
     app.listen(port)
