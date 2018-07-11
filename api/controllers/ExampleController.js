@@ -23,11 +23,7 @@ exports.create = function (req, res) {
  * @param {*} res
  */
 exports.all = function (req, res) {
-  Example.find({}, function (err, example) {
-    if (err)
-      res.send(err);
-    res.json(example);
-  });
+  res.send('zica')
 };
 
 /**
