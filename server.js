@@ -1,7 +1,13 @@
 import express from 'express'
 import bodyParser from 'body-parser'
+import dotenv from 'dotenv'
 import router from './app/ship/core/router/routes_boot'
+import sequelize from './app/ship/core/orm/sequelize_boot'
 
+//Load .env
+dotenv.load()
+
+//Load Express
 var app = express()
 var port = process.env.PORT || 3000; //Port where server run.
 
@@ -18,6 +24,7 @@ var allowCORS = function (req, res, next) {
     next();
 }
 
+//Set some configure to Express
 app.use(allowCORS);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -25,11 +32,14 @@ app.use(bodyParser.json());
 //Start the routes
 router.registerRoutes(app)
 
-//Default response for an nonexistent URL
-app.use(function (req, res) {
-    res.status(404).send('URL ' + req.originalUrl + ' not found')
-});
+//Test DB connection
+sequelize.testConnection()
 
 //Start Server
-app.listen(port);
-console.log('RESTful API server started on PORT: ' + port);
+try {
+    app.listen(port)
+    console.log('RESTful API server started on PORT: ' + port);
+}
+catch (e) {
+    console.log('Server cannot be started!', e)
+}

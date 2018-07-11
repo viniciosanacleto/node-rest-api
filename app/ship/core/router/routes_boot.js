@@ -14,6 +14,11 @@ function registerRoutes(app) {
             app.route(route.path)[route.method](route.handle)
         }
     }
+
+    //Register 404 response
+    app.use(function (req, res) {
+        res.status(404).send('Endpoint ' + req.originalUrl + ' not found')
+    });
 }
 
 export default {
