@@ -1,8 +1,7 @@
 import express from 'express'
-import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
-import routes from './api/routes/Routes'
-import models from './api/models/ModelsModule'
+import example from './app/containers/example'
+import models from './app/models/ModelsModule'
 
 var app = express()
 var port = process.env.PORT || 3000; //Port where server run.
@@ -20,16 +19,12 @@ var allowCORS = function (req, res, next) {
     next();
 }
 
-//Mongoose Instance Connection URL Connection
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/node-api');
-
 app.use(allowCORS);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 //Start the routes
-routes(app);
+example.registerRoutes(app)
 
 //Default response for an unexistent URL
 app.use(function (req, res) {
