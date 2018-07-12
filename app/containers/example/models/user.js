@@ -1,11 +1,11 @@
-import orm from '../../../ship/core/orm'
+import {session,sequelize} from '../../../ship/core/orm'
 
-const User = orm.session.define('user', {
+const User = session.define('user', {
     firstName: {
-        type: orm.Sequelize.STRING
+        type: sequelize.STRING
     },
     lastName: {
-        type: orm.Sequelize.STRING
+        type: sequelize.STRING
     }
 });
 

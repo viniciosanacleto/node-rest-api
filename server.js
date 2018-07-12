@@ -2,7 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import router from './app/ship/core/router/routes-boot'
-import orm from './app/ship/core/orm/sequelize-boot'
+import {testConnection} from './app/ship/core/orm/utils'
 
 //Load .env
 dotenv.load()
@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 router.registerRoutes(app)
 
 //Test DB connection
-// orm.testConnection()
+// testConnection()
 
 //Start Server
 try {

@@ -1,0 +1,12 @@
+import {session} from './index'
+
+export function testConnection() {
+    session
+        .authenticate()
+        .then(() => {
+            console.log('Connection has been established successfully.');
+        })
+        .catch(err => {
+            console.error('Unable to connect to the database:', err);
+        })
+}
