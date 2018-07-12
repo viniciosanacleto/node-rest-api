@@ -1,10 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import dotenv from 'dotenv'
 import router from './app/ship/core/router'
-
-//Load .env
-dotenv.load()
 
 //Load Express
 var app = express()
@@ -30,7 +26,6 @@ app.use(bodyParser.json());
 
 //Start the routes
 router.registerRoutes(app)
-
 
 //Start Server
 try {
