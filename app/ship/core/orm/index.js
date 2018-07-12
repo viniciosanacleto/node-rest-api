@@ -1,4 +1,4 @@
-import orm from './sequelize_boot'
+import orm from './sequelize-boot'
 
 export default {
     session: orm.session,
