@@ -19,13 +19,14 @@ var allowCORS = function (req, res, next) {
     next();
 }
 
-//Set some configure to Express
+//Set some configure to Express Middlewares
 app.use(allowCORS);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 //Start the routes
 router.registerRoutes(app)
+
 
 //Start Server
 try {

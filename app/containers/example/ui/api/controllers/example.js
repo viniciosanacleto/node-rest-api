@@ -1,4 +1,4 @@
-import User from '../../../models/user'
+import UserRepository from '../../../data/repositories/user'
 
 export default {
     example(req, res) {
@@ -10,13 +10,16 @@ export default {
     },
 
     createUser(req, res) {
-        if (User.create({
-            firstName: req.body.name,
-            lastName: req.body.last
-        })) {
-            res.send('User sucefully created')
-        }else{
-            res.send('Failed to create a new User')
-        }
+        let newUser = UserRepository.create(req.body)
+        newUser.then(function (result) {
+            res.send(result)
+        })
+    },
+
+    deleteUser(req, res) {
+        let deletedUser = UserRepository.destroy(req.params.id)
+        deletedUser.then(function () {
+            res.send(true)
+        })
     }
 }

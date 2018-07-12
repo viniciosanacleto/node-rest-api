@@ -15,5 +15,10 @@ export default [
         method: 'post',
         path: '/example',
         handle: exampleController.createUser
+    },
+    {
+        method: 'delete',
+        path: '/example/:id',
+        handle: exampleController.deleteUser
     }
 ]
