@@ -1,8 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
-import router from './app/ship/core/router/routes-boot'
-import {testConnection} from './app/ship/core/orm/utils'
+import router from './app/ship/core/router'
 
 //Load .env
 dotenv.load()
@@ -32,8 +31,6 @@ app.use(bodyParser.json());
 //Start the routes
 router.registerRoutes(app)
 
-//Test DB connection
-// testConnection()
 
 //Start Server
 try {
