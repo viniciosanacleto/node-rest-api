@@ -1,24 +1,24 @@
-import exampleController from '../controllers/example'
+import ExampleController from '../controllers/example'
 
 export default [
     {
         method: 'get',
         path: '/example',
-        handle: exampleController.example
+        handle: ExampleController.example
     },
     {
         method: 'get',
         path: '/example/:name',
-        handle: exampleController.exampleParams
+        handle: ExampleController.exampleParams
     },
     {
         method: 'post',
         path: '/example',
-        handle: exampleController.createUser
+        handle: ExampleController.createUser
     },
     {
         method: 'delete',
         path: '/example/:id',
-        handle: exampleController.deleteUser
+        handle: ExampleController.deleteUser
     }
 ]
