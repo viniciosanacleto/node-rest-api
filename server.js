@@ -1,37 +1,21 @@
 import express from 'express'
-import bodyParser from 'body-parser'
-import router from './app/ship/core/router'
+import {registerRoutes} from './app/ship/core/router'
+import {registerMiddlewares} from './app/ship/core/middleware'
 
 //Load Express
 var app = express()
 var port = process.env.PORT || 3000; //Port where server run.
 
-/**
- * CORS configuration
- * !! Reconfigure for deploy !!
- **/
-var allowCORS = function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '127.0.0.1:3000');
-    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    res.header('Access-Control-Allow-Credentials', 'true');
-
-    next();
-}
-
-//Set some configure to Express Middlewares
-app.use(allowCORS);
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+//Set some Middlewares
+registerMiddlewares(app)
 
 //Start the routes
-router.registerRoutes(app)
+registerRoutes(app)
 
-
-//Start Server
+//Start the Server
 try {
     app.listen(port)
-    console.log('RESTful API server started on PORT: ' + port);
+    console.log('RESTful API server started on PORT: ' + port)
 }
 catch (e) {
     console.log('Server cannot be started!', e)
