@@ -8,10 +8,19 @@ import containers from '../../../containers'
 function registerRoutes(app) {
     //For each registered container
     for (let container of containers) {
-        //For each route in registered container
+        //For each route file in registered container
         for (let route of container.routes) {
-            //Register route dynamically
-            app.route(route.path)[route.method](route.handle)
+            //For each endpoint in route file
+            for (let endpoint of route.endpoints) {
+                //If the endpoint has an version insert them before
+                //ex.: http://.../version/endpoint
+                if (route.version) {
+                    app.route(`/${route.version}${endpoint.path}`)[endpoint.method](endpoint.handle)
+                }
+                else {
+                    app.route(endpoint.path)[endpoint.method](endpoint.handle)
+                }
+            }
         }
     }
 
